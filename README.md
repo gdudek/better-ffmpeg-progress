@@ -40,10 +40,10 @@ Estimated Output Filesize: 61.099 MB in  1:40
 
 ### CLI:
 Command line:
-python better_ffmpeg_progress/better_ffmpeg_progress.py ffmpeg-executable-path -i [more arguments]
+`python better_ffmpeg_progress/better_ffmpeg_progress.py ffmpeg-executable-path -i [more arguments]`
 
-Example:
-python better_ffmpeg_progress.py ffmpeg -i /Users/gdudek/Downloads/whatever.mp4 -q:a 0 -map a -metadata "copyright=&#169;2024 Me" -y output.mp3
+Full example:
+`python better_ffmpeg_progress.py ffmpeg -i /Users/gdudek/Downloads/whatever.mp4 -q:a 0 -map a -metadata "copyright=&#169;2024 Me" -y output.mp3`
 
 
 ### Callable method:
