@@ -6,11 +6,11 @@
 
 # Better FFmpeg Progress
 
-Runs an FFmpeg command and uses [tqdm](https://github.com/tqdm/tqdm) to show a progress bar.
+Runs an FFmpeg command and (optionally) uses [tqdm](https://github.com/tqdm/tqdm) to show a progress bar.
 
 </div>
 
-## Example:
+## TQDM output example:
 
 ```
 39%|███████████████████████████████████████████ | 23.6/60.2 [00:19<00:34, 1.07s/s]
@@ -25,11 +25,28 @@ Where:
 - `00:34` is the estimated time required for the FFmpeg process to complete.
 - `1.07` shows how many seconds of the input file are processed per second.
 
+## CLI plain-text output example:
+
+```
+The duration of /Users/gdudek/Downloads/whatever.mp4 has been detected as 1:00:38.102494.
+Estimated Output Filesize: 61.099 MB in  1:40
+```
+
 ## Installation:
 
 `pip3 install better-ffmpeg-progress --upgrade`
 
 ## Usage:
+
+### CLI:
+Command line:
+python better_ffmpeg_progress/better_ffmpeg_progress.py ffmpeg-executable-path -i [more arguments]
+
+Example:
+python better_ffmpeg_progress.py ffmpeg -i /Users/gdudek/Downloads/whatever.mp4 -q:a 0 -map a -metadata "copyright=&#169;2024 Me" -y output.mp3
+
+
+### Callable method:
 
 Create an instance of the `FfmpegProcess` class and supply a list of arguments like you would to `subprocess.run()`.
 
@@ -90,6 +107,11 @@ The `run` method takes the following **optional** arguments:
 
 ## Changelog:
 
+[19/09/2023]
+
+- Directly support command-line invocation.
+- Formatting changes, exit codes etc.
+  
 [19/09/2022]
 
 - Add the ability to specify a `success_handler` argument, a function to run if the FFmpeg process completes successfully.
