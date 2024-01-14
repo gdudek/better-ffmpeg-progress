@@ -205,20 +205,22 @@ def handle_error():
   # Code to run if the FFmpeg process encounters an error.
   pass
 
-# Pass a list of FFmpeg arguments, like you would if using subprocess.run()
-# process = FfmpegProcess(["ffmpeg", "-i", "input.mp4", "-c:a", "libmp3lame", "output.mp3"])
 
-commandstring = []
-for arg in sys.argv[1:]:          # skip sys.argv[0] since the question didn't ask for it
-    if ' ' in arg:
-        commandstring.append( '{}'.format(arg) )
-    else:
-        commandstring.append ( "{}".format(arg) )
+if __name__ == '__main__':
+    # Pass a list of FFmpeg arguments, like you would if using subprocess.run()
+    # process = FfmpegProcess(["ffmpeg", "-i", "input.mp4", "-c:a", "libmp3lame", "output.mp3"])
 
-process = FfmpegProcess( commandstring )
+    commandstring = []
+    for arg in sys.argv[1:]:          # skip sys.argv[0] since the question didn't ask for it
+        if ' ' in arg:
+            commandstring.append( '{}'.format(arg) )
+        else:
+            commandstring.append ( "{}".format(arg) )
+    process = FfmpegProcess( commandstring )
 
-ffmpeg_output_path = 'ffmpeg_output.txt'
+    ffmpeg_output_path = 'ffmpeg_output.txt'
 
-# Use the run method to run the FFmpeg command.
-# process.run(progress_handler=handle_progress_info, ffmpeg_output_file=ffmpeg_output_path, success_handler=handle_success, error_handler=handle_error)
-process.run(ffmpeg_output_file=ffmpeg_output_path, success_handler=handle_success, error_handler=handle_error)
+    # Use the run method to run the FFmpeg command.
+    # process.run(progress_handler=handle_progress_info, ffmpeg_output_file=ffmpeg_output_path, success_handler=handle_success, error_handler=handle_error)
+
+    process.run(ffmpeg_output_file=ffmpeg_output_path, success_handler=handle_success, error_handler=handle_error)
